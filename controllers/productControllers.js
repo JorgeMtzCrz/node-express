@@ -7,14 +7,14 @@ exports.createProduct = (req, res, next) => {
 }
 
 exports.getAllProducts = (req, res, next) => {
-    Product.find().populate({ path: 'workers.workerId' })
+    Product.find()
         .then(products => res.status(200).json({ products }))
         .catch(err => res.status(500).json({ err }))
 }
 
 exports.getOneProduct = (req, res, next) => {
     const { id } = req.params
-    Product.findById(id).populate({ path: 'workers.workerId' })
+    Product.findById(id)
         .then(product => res.status(200).json({ product }))
         .catch(err => res.status(500).json({ err }))
 }
