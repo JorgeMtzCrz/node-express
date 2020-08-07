@@ -37,9 +37,12 @@ app.use(logger('dev'));
 
 const auth = require('./routes/auth');
 const product = require('./routes/products');
+const header = require('./routes/headers');
+
 
 app.use('/auth', auth);
 app.use('/product', product);
+app.use('/header', header)
 
 
 // Uncomment this line for production
