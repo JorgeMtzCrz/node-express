@@ -1,7 +1,8 @@
 const Header = require('../models/Header')
 
 exports.createHeader = (req, res, next) => {
-    Header.create({...req.body })
+    const { img, newHeader: { title, subtitle, description, url } } = req.body
+    Header.create({ img, title, subtitle, description, url })
         .then(header => res.status(200).json({ header }))
         .catch(err => res.status(500).json({ err }))
 }

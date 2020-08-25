@@ -22,7 +22,7 @@ const app = express();
 app.use(
     cors({
         credentials: true,
-        origin: [process.env.FRONTENDPOINT]
+        origin: [process.env.FRONTENDPOINT, process.env.FRONTENDPOINT2]
     })
 );
 
@@ -38,11 +38,16 @@ app.use(logger('dev'));
 const auth = require('./routes/auth');
 const product = require('./routes/products');
 const header = require('./routes/headers');
+const banner = require('./routes/banner');
+const card = require('./routes/card');
+const index = require('./routes/index')
 
-
+app.use('/', index)
 app.use('/auth', auth);
 app.use('/product', product);
 app.use('/header', header)
+app.use('/banner', banner)
+app.use('/card', card)
 
 
 // Uncomment this line for production

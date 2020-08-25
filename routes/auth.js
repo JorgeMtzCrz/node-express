@@ -3,7 +3,6 @@ const { signup, login, loggedUser, logout, createUser, updateUser, upload, delet
 const passport = require('../config/passport')
 const { verifyToken } = require('../config/jwt')
 const uploadCloud = require('../config/cloudinary')
-
 router.post('/signup', signup)
 router.post('/createuser', createUser)
 router.post('/login', passport.authenticate('local'), login)
@@ -12,7 +11,4 @@ router.get('/logout', logout)
 router.patch('/upload/:id', uploadCloud.single('photo'), upload)
 router.patch('/update/:id', updateUser)
 router.delete('/delete/:id', deleteUser)
-
-
-
 module.exports = router;

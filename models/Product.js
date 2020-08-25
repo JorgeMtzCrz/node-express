@@ -1,9 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const productSchema = new Schema({
-    name: String,
+    title: String,
     description: String,
-    specifications: String,
+    specifications: [String],
     cathegory: { type: String, enum: ['hdtvs', 'accesories', 'computers', 'audio', 'smartphones'] },
     price: Number,
     img: String,
