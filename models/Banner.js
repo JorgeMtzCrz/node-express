@@ -4,7 +4,8 @@ const bannerSchema = new Schema({
     title: String,
     subtitle: String,
     img: String,
-    url: String
+    url: String,
+    available: { type: Boolean, default: false }
 }, {
     timestamps: true,
     versionKey: false

@@ -20,9 +20,17 @@ exports.getOneHeader = (req, res, next) => {
         .catch(err => res.status(500).json({ err }))
 }
 
-exports.updateHeader = (req, res, next) => {
+exports.getAvailableHeaders = (req, res, next) => {
+    Header.find({ available: true })
+        .then(headers => res.status(200).json({ headers }))
+        .catch(err => res.status(500).json({ err }))
+}
+
+exports.updateHeader = async(req, res, next) => {
     const { id } = req.params
-    Header.findByIdAndUpdate(id, {...req.body }, { new: true })
+    const updateAvailable = await Header.findById(id)
+
+    Header.findByIdAndUpdate(id, { available: !updateAvailable.available }, { new: true })
         .then(header => res.status(200).json({ header }))
         .catch(err => res.status(500).json({ err }))
 }

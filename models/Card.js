@@ -5,7 +5,8 @@ const cardSchema = new Schema({
     subtitle: String,
     img: String,
     description: String,
-    url: String
+    url: String,
+    available: { type: Boolean, default: false }
 }, {
     timestamps: true,
     versionKey: false

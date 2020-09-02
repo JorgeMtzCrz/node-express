@@ -5,7 +5,8 @@ const headerSchema = new Schema({
     subtitle: String,
     description: String,
     img: String,
-    url: String
+    url: String,
+    available: { type: Boolean, default: false }
 }, {
     timestamps: true,
     versionKey: false
