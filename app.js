@@ -40,6 +40,7 @@ const product = require('./routes/products');
 const header = require('./routes/headers');
 const banner = require('./routes/banner');
 const card = require('./routes/card');
+const subscriber = require('./routes/subscriber')
 const index = require('./routes/index')
 
 app.use('/', index)
@@ -48,6 +49,7 @@ app.use('/product', product);
 app.use('/header', header)
 app.use('/banner', banner)
 app.use('/card', card)
+app.use('/subscriber', subscriber)
 
 
 // Uncomment this line for production
