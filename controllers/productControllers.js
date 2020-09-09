@@ -1,9 +1,14 @@
 const Product = require('../models/Product')
 
-exports.createProduct = (req, res, next) => {
-    const { img, newProduct: { title, price, description, cathegory } } = req.body
+exports.createProduct = async(req, res, next) => {
+    const { img, specifications, newProduct: { title, price, description, cathegory } } = req.body
 
-    Product.create({ img, title, price, description, cathegory })
+
+    const preProduct = await Product.create({ img, specifications, title, price, description, cathegory })
+
+    const url = `/${cathegory}/${preProduct._id}`
+
+    Product.findByIdAndUpdate(preProduct._id, { url }, { new: true })
         .then(product => res.status(200).json({ product }))
         .catch(err => res.status(500).json({ err }))
 }
@@ -42,8 +47,9 @@ exports.getAudio = (req, res, next) => {
         .catch(err => res.status(500).json({ err }))
 }
 
-exports.updateProduct = (req, res, next) => {
+exports.updateProduct = async(req, res, next) => {
     const { id } = req.params
+
     Product.findByIdAndUpdate(id, {...req.body }, { new: true })
         .then(product => res.status(200).json({ product }))
         .catch(err => res.status(500).json({ err }))

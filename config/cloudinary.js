@@ -11,7 +11,7 @@ cloudinary.config({
 
 const storage = cloudinaryStorage({
     cloudinary,
-    folder: 'Images Best Deal',
+    folder: 'Images Best Deal Test',
     allowedFormats: ['jpg', 'png'],
     filename: (req, file, cb) => {
         cb(null, file.originalname)
