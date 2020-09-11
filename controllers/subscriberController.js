@@ -17,6 +17,7 @@ exports.createSubscriber = async(req, res, next) => {
                 })
         }
     } else {
+
         res.status(400).json({ msg: "User already exist" })
     }
 }

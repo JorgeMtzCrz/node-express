@@ -8,10 +8,11 @@ const productSchema = new Schema({
     price: Number,
     img: String,
     stock: Boolean,
-    discount: String,
+    discount: Number,
     popular: Boolean,
     comp_pricing: String,
-    url: String
+    url: String,
+    available: { type: Boolean, default: false }
 }, {
     timestamps: true,
     versionKey: false
