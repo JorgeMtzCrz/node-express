@@ -22,7 +22,7 @@ const app = express();
 app.use(
     cors({
         credentials: true,
-        origin: [process.env.FRONTENDPOINT, process.env.FRONTENDPOINT2, process.env.FRONTENDPOINT3]
+        origin: [process.env.FRONTENDPOINT, process.env.FRONTENDPOINT2, process.env.FRONTENDPOINT3, process.env.FRONTENDPOINT4, process.env.FRONTENDPOINT5]
     })
 );
 
