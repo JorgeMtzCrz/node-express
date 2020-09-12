@@ -24,13 +24,13 @@ exports.login = (req, res, next) => {
         secure: true,
         strict: true,
         httpOnly: true,
-        sameSite: "strict"
+        sameSite: true
     })
     res.cookie('signature', signature, {
         httpOnly: true,
         secure: true,
         strict: true,
-        sameSite: "strict"
+        sameSite: true
     })
     res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict")
     res.status(200).json({ user })
