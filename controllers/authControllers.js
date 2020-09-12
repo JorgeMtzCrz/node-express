@@ -32,6 +32,7 @@ exports.login = (req, res, next) => {
         strict: true,
         sameSite: "strict"
     })
+    res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict")
     res.status(200).json({ user })
 }
 exports.loggedUser = (req, res, next) => {
