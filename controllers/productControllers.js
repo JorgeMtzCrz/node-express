@@ -36,9 +36,9 @@ exports.getComputers = (req, res, next) => {
         .then(computers => res.status(200).json({ computers }))
         .catch(err => res.status(500).json({ err }))
 }
-exports.getAccesories = (req, res, next) => {
-    Product.find({ cathegory: 'accesories' })
-        .then(accesories => res.status(200).json({ accesories }))
+exports.getAccessories = (req, res, next) => {
+    Product.find({ cathegory: 'accessories' })
+        .then(accessories => res.status(200).json({ accessories }))
         .catch(err => res.status(500).json({ err }))
 }
 exports.getAudio = (req, res, next) => {
