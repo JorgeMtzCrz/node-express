@@ -4,7 +4,7 @@ const productSchema = new Schema({
     title: String,
     description: String,
     specifications: [{ titleSpecification: String, descriptionProduct: String }],
-    cathegory: { type: String, enum: ['hdtvs', 'accesories', 'computers', 'audio', 'smartphones'] },
+    cathegory: { type: String, enum: ['hdtvs', 'accessories', 'computers', 'audio', 'smartphones'] },
     price: Number,
     img: String,
     stock: Boolean,
