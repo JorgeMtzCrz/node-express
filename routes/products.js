@@ -1,10 +1,13 @@
 const router = require('express').Router();
-const { createProduct, getAllProducts, getAccessories, getAudio, getComputers, getHdtvs, getOneProduct, updateProduct, deleteProduct } = require('../controllers/productControllers')
+const { createProduct, getAllProducts, getAccessories, getAudio, getComputers, getHdtvs, getOneProduct, updateProduct, deleteProduct, searchProduct, reservationProducts } = require('../controllers/productControllers')
 
 
 router.post('/create', createProduct)
+router.post('/email', reservationProducts)
+
 router.get('/all', getAllProducts)
 router.get('/hdtvs', getHdtvs)
+router.get('/search', searchProduct)
 router.get('/computers', getComputers)
 router.get('/accessories', getAccessories)
 router.get('/audio', getAudio)

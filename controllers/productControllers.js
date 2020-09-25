@@ -1,4 +1,6 @@
 const Product = require('../models/Product')
+const { sendEmail } = require('../config/nodemailer')
+
 
 exports.createProduct = async(req, res, next) => {
     const { img, specifications, newProduct: { title, price, description, cathegory } } = req.body
@@ -17,6 +19,24 @@ exports.getAllProducts = (req, res, next) => {
     Product.find()
         .then(products => res.status(200).json({ products }))
         .catch(err => res.status(500).json({ err }))
+}
+
+exports.searchProduct = (req, res, next) => {
+    const {
+        title
+    } = req.query;
+    const regex = title.split(' ').join('|');
+    Product.find({
+            $or: [{
+                title: {
+                    $regex: regex,
+                    $options: 'i'
+                }
+            }]
+        }).limit(5)
+        .then(products => res.status(200).json({ products }))
+        .catch(err => res.status(500).json({ err }))
+
 }
 
 exports.getOneProduct = (req, res, next) => {
@@ -60,4 +80,16 @@ exports.deleteProduct = (req, res, next) => {
     Product.findByIdAndDelete(id)
         .then(product => res.status(200).json({ product }))
         .catch(err => res.status(500).json({ err }))
+}
+
+exports.reservationProducts = (req, res, next) => {
+    const { email, name, products, order, total } = req.body
+    console.log(req.body)
+    sendEmail(email, name, products, order, total)
+        .then(info => {
+            res.send('Email sent')
+        })
+        .catch(err => {
+            res.send(err)
+        })
 }
