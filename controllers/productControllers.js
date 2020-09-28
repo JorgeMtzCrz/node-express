@@ -77,6 +77,8 @@ exports.updateProduct = async(req, res, next) => {
 
 exports.deleteProduct = (req, res, next) => {
     const { id } = req.params
+    const updateAvailable = await Product.findById(id)
+
     Product.findByIdAndUpdate(id, { available: !updateAvailable.available }, { new: true })
         .then(product => res.status(200).json({ product }))
         .catch(err => res.status(500).json({ err }))
