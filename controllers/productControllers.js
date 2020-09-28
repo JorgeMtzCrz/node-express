@@ -77,14 +77,13 @@ exports.updateProduct = async(req, res, next) => {
 
 exports.deleteProduct = (req, res, next) => {
     const { id } = req.params
-    Product.findByIdAndDelete(id)
+    Product.findByIdAndUpdate(id, { available: !updateAvailable.available }, { new: true })
         .then(product => res.status(200).json({ product }))
         .catch(err => res.status(500).json({ err }))
 }
 
 exports.reservationProducts = (req, res, next) => {
     const { email, name, products, order, total } = req.body
-    console.log(req.body)
     sendEmail(email, name, products, order, total)
         .then(info => {
             res.send('Email sent')
