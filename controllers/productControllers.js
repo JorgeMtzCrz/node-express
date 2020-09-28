@@ -69,6 +69,7 @@ exports.getAudio = (req, res, next) => {
 
 exports.updateProduct = async(req, res, next) => {
     const { id } = req.params
+    const updateAvailable = await Product.findById(id)
 
     Product.findByIdAndUpdate(id, { available: !updateAvailable.available }, { new: true })
         .then(product => res.status(200).json({ product }))
@@ -77,7 +78,6 @@ exports.updateProduct = async(req, res, next) => {
 
 exports.deleteProduct = (req, res, next) => {
     const { id } = req.params
-    const updateAvailable = await Product.findById(id)
 
     Product.findByIdAndDelete(id)
         .then(product => res.status(200).json({ product }))
