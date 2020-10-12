@@ -1,5 +1,5 @@
 const Product = require('../models/Product')
-const { sendEmail } = require('../config/nodemailer')
+const { sendEmail, deliveryEmail } = require('../config/nodemailer')
 
 
 exports.createProduct = async(req, res, next) => {
@@ -76,6 +76,14 @@ exports.updateProduct = async(req, res, next) => {
         .catch(err => res.status(500).json({ err }))
 }
 
+exports.updateProductInfo = async(req, res, next) => {
+    const { id } = req.params
+
+    Product.findByIdAndUpdate(id, {...req.body }, { new: true })
+        .then(product => res.status(200).json({ product }))
+        .catch(err => res.status(500).json({ err }))
+}
+
 exports.deleteProduct = (req, res, next) => {
     const { id } = req.params
 
@@ -85,13 +93,24 @@ exports.deleteProduct = (req, res, next) => {
 }
 
 exports.reservationProducts = (req, res, next) => {
-    const { email, name, products, order, total } = req.body
+    const { email, name, products, order, total, delivery } = req.body
     console.log(req.body)
-    sendEmail(email, name, products, order, total)
-        .then(info => {
-            res.send('Email sent')
-        })
-        .catch(err => {
-            res.send(err)
-        })
+    if (delivery === 0) {
+        sendEmail(email, name, products, order, total)
+            .then(info => {
+                res.send('Email sent')
+            })
+            .catch(err => {
+                res.send(err)
+            })
+    } else if (delivery === 20) {
+        deliveryEmail(email, name, products, order, total)
+            .then(info => {
+                res.send('Email sent')
+            })
+            .catch(err => {
+                res.send(err)
+            })
+    }
+
 }
