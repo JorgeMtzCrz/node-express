@@ -33,6 +33,13 @@ exports.updateBanner = async(req, res, next) => {
         .then(banner => res.status(200).json({ banner }))
         .catch(err => res.status(500).json({ err }))
 }
+exports.updateBannerInfo = async(req, res, next) => {
+    const { id } = req.params
+
+    Banner.findByIdAndUpdate(id, {...req.body }, { new: true })
+        .then(banner => res.status(200).json({ banner }))
+        .catch(err => res.status(500).json({ err }))
+}
 
 exports.deleteBanner = (req, res, next) => {
     const { id } = req.params

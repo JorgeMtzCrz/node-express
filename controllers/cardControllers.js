@@ -33,6 +33,13 @@ exports.updateCard = async(req, res, next) => {
         .then(card => res.status(200).json({ card }))
         .catch(err => res.status(500).json({ err }))
 }
+exports.updateCardInfo = async(req, res, next) => {
+    const { id } = req.params
+
+    Card.findByIdAndUpdate(id, {...req.body }, { new: true })
+        .then(card => res.status(200).json({ card }))
+        .catch(err => res.status(500).json({ err }))
+}
 
 exports.deleteCard = (req, res, next) => {
     const { id } = req.params

@@ -35,6 +35,14 @@ exports.updateHeader = async(req, res, next) => {
         .catch(err => res.status(500).json({ err }))
 }
 
+exports.updateHeaderInfo = async(req, res, next) => {
+    const { id } = req.params
+
+    Header.findByIdAndUpdate(id, {...req.body }, { new: true })
+        .then(header => res.status(200).json({ header }))
+        .catch(err => res.status(500).json({ err }))
+}
+
 exports.deleteHeader = (req, res, next) => {
     const { id } = req.params
     Header.findByIdAndDelete(id)

@@ -47,22 +47,22 @@ exports.getOneProduct = (req, res, next) => {
 }
 
 exports.getHdtvs = (req, res, next) => {
-    Product.find({ cathegory: 'hdtvs' })
+    Product.find({ cathegory: 'hdtvs', available: true })
         .then(hdtvs => res.status(200).json({ hdtvs }))
         .catch(err => res.status(500).json({ err }))
 }
 exports.getComputers = (req, res, next) => {
-    Product.find({ cathegory: 'computers' })
+    Product.find({ cathegory: 'computers', available: true })
         .then(computers => res.status(200).json({ computers }))
         .catch(err => res.status(500).json({ err }))
 }
 exports.getAccessories = (req, res, next) => {
-    Product.find({ cathegory: 'accessories' })
+    Product.find({ cathegory: 'accessories', available: true })
         .then(accessories => res.status(200).json({ accessories }))
         .catch(err => res.status(500).json({ err }))
 }
 exports.getAudio = (req, res, next) => {
-    Product.find({ cathegory: 'audio' })
+    Product.find({ cathegory: 'audio', available: true })
         .then(audio => res.status(200).json({ audio }))
         .catch(err => res.status(500).json({ err }))
 }
