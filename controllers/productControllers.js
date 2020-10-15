@@ -94,11 +94,10 @@ exports.deleteProduct = (req, res, next) => {
 
 exports.reservationProducts = (req, res, next) => {
     const { email, name, products, order, total, delivery } = req.body
-    console.log(req.body)
     if (delivery === 0) {
         sendEmail(email, name, products, order, total)
             .then(info => {
-                res.send('Email sent')
+                res.send('Email sent store')
             })
             .catch(err => {
                 res.send(err)
@@ -106,7 +105,7 @@ exports.reservationProducts = (req, res, next) => {
     } else if (delivery === 20) {
         deliveryEmail(email, name, products, order, total)
             .then(info => {
-                res.send('Email sent')
+                res.send('Email sent delivery')
             })
             .catch(err => {
                 res.send(err)

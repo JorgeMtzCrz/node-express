@@ -34,7 +34,7 @@ exports.sendEmail = (email, name, products, order, total) => {
 
     return transporter.sendMail({
         from: '"Best Deal Denver" <contact@bestdealdenver.com>',
-        to: [email, 'jorge@magicmirror.dev'],
+        to: [email, 'jorge@magicmirror.dev', 'bestdealdenver@gmail.com', 'best.deal.in.denver@gmail.com'],
         subject: 'Thank you for your deal',
         html: `
         <head>
@@ -147,7 +147,7 @@ exports.deliveryEmail = (email, name, products, order, total) => {
 
     return transporter.sendMail({
         from: '"Best Deal Denver" <contact@bestdealdenver.com>',
-        to: [email, 'jorge@magicmirror.dev'],
+        to: [email, 'jorge@magicmirror.dev', 'bestdealdenver@gmail.com', 'best.deal.in.denver@gmail.com'],
         subject: 'Thank you for your deal',
         html: `
         <head>
