@@ -25,7 +25,7 @@ exports.sendEmail = (email, name, products, order, total) => {
                 </div>
                 <div style="display: inline-block; width: 100px; position: absolute; right:37px; top: 27px; ">
                     <p style="font-size: 20px; font-weight: 700; color:#036;">$ ${e.price}</p>
-                    <p style="font-size: 20px; font-weight: 700; color:#036;">$ ${e.discount} OFF</p>
+                    <p style="font-size: 20px; font-weight: 700; color:#036;">$ ${e.discount ? e.discount : '0'} OFF</p>
                 </div>
             </div>
         
@@ -34,7 +34,7 @@ exports.sendEmail = (email, name, products, order, total) => {
 
     return transporter.sendMail({
         from: '"Best Deal Denver" <contact@bestdealdenver.com>',
-        to: [email, 'jorge@magicmirror.dev', 'bestdealdenver@gmail.com', 'best.deal.in.denver@gmail.com'],
+        to: [email, 'bestdealdenver@gmail.com', 'best.deal.in.denver@gmail.com'],
         subject: 'Thank you for your deal',
         html: `
         <head>
@@ -138,7 +138,7 @@ exports.deliveryEmail = (email, name, products, order, total) => {
                 </div>
                 <div style="display: inline-block; width: 100px; position: absolute; right:37px; top: 27px; ">
                     <p style="font-size: 20px; font-weight: 700; color:#036;">$ ${e.price}</p>
-                    <p style="font-size: 20px; font-weight: 700; color:#036;">$ ${e.discount} OFF</p>
+                    <p style="font-size: 20px; font-weight: 700; color:#036;">$ ${e.discount ? e.discount : '0'} OFF</p>
                 </div>
             </div>
         
@@ -147,7 +147,7 @@ exports.deliveryEmail = (email, name, products, order, total) => {
 
     return transporter.sendMail({
         from: '"Best Deal Denver" <contact@bestdealdenver.com>',
-        to: [email, 'jorge@magicmirror.dev', 'bestdealdenver@gmail.com', 'best.deal.in.denver@gmail.com'],
+        to: [email, 'bestdealdenver@gmail.com', 'best.deal.in.denver@gmail.com'],
         subject: 'Thank you for your deal',
         html: `
         <head>
