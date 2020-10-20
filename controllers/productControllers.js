@@ -93,9 +93,9 @@ exports.deleteProduct = (req, res, next) => {
 }
 
 exports.reservationProducts = (req, res, next) => {
-    const { email, name, products, order, total, delivery } = req.body
+    const { email, name, products, order, total, delivery, dateStore } = req.body
     if (delivery === 0) {
-        sendEmail(email, name, products, order, total)
+        sendEmail(email, name, dateStore, products, order, total)
             .then(info => {
                 res.send('Email sent store')
             })
