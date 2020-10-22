@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-exports.sendEmail = (email, name, dateStore, products, order, total) => {
+exports.sendEmail = (email, name, products, order, total) => {
 
     let productsDetail = ''
     products.map((e, i) => {
@@ -95,7 +95,7 @@ exports.sendEmail = (email, name, dateStore, products, order, total) => {
                 <br>
                 <br>
                 <p class="subtitle1">
-                Please Remember you have from now until ${dateStore} of today to pick them up. After that time, we do not guarantee that they will be available.
+                Please Remember you have from now until 6:45pm of today to pick them up. After that time, we do not guarantee that they will be available.
                 </p>
                 <p class="subtitle1">
                 Your order is:

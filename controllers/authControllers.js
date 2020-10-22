@@ -26,7 +26,6 @@ exports.login = (req, res, next) => {
     })
     res.cookie('signature', signature, {
         httpOnly: true,
-
         sameSite: true
     })
     res.status(200).json({ user })
