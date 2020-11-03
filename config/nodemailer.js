@@ -291,9 +291,9 @@ exports.sendEmail = (email, name, products, order, total) => {
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td align="center" class="footercopy">
-                                                Our address: 4371 S Broadway, Englewood, CO 8011
+                                                Our address: 4371 S Broadway, Englewood, CO 80113
 
-                                                <br/> If you have any questions, please contact us at: +1 303-593-0581
+                                                <br/> If you have any questions, please contact us at: (303) 593-0581
                                             </td>
                                         </tr>
                                     </table>
@@ -597,9 +597,9 @@ exports.deliveryEmail = (email, name, products, order, total) => {
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center" class="footercopy">
-                                                    Our address: 4371 S Broadway, Englewood, CO 8011
+                                                    Our address: 4371 S Broadway, Englewood, CO 80113
 
-                                                    <br/> If you have any questions, please contact us at: +1 303-593-0581
+                                                    <br/> If you have any questions, please contact us at: (303) 593-0581
                                                 </td>
                                             </tr>
                                         </table>
