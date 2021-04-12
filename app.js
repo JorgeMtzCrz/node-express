@@ -8,6 +8,38 @@ const logger = require('morgan');
 const path = require('path');
 const cors = require('cors');
 const passport = require('./config/passport')
+const snowflake = require('snowflake-sdk')
+
+
+
+const connection = snowflake.createConnection({
+    account: 'zxventures',
+    username: 'vendor_superlikers',
+    password: 'whAG1XfP6CCU4a_.b',
+    region: 'us-east-1',
+    warehouse: 'WH_INTERACTIVE'
+});
+connection.connect(
+    function(err, conn) {
+        if (err) {
+            console.error('Unable to connect: ' + err.message);
+        } else {
+            console.log('Successfully connected to Snowflake.');
+            // Optional: store the connection ID.
+            connection_ID = conn.getId();
+        }
+    }
+);
+const query = connection.execute({
+    sqlText: 'select * from DTC_EXTERNAL.MX_MODELORAMA_THIRDPARTY.VW_DIM_MPG_GOALS limit 5'
+})
+
+const queryStream = query.streamRows()
+queryStream.on('data', function(row) {
+    console.log(row)
+})
+
+console.log(queryStream)
 
 mongoose
     .connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
